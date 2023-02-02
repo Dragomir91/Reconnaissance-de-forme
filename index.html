@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US"*>
+  <head>
+    {%load static%}
+    
+    <meta charset="utf-8" />
+    <title>Optical Caracter Recognition</title>
+    <link rel="icon"  href="digits_hand.ico">
+    <style >table, th, td {
+      border-color: #96D4D4;
+      border: 3px solid powerblue;
+      th {
+        text-align: center;
+      }
+      figure {
+      border: 10px #cccccc solid;
+      padding: 10px;
+      margin: 10px;
+      }
+    }
+    .Title{
+      background-color: lightblue;
+      color: black;
+      padding: 10px;
+      text-align: center;
+    }
+    .Image{
+      width = "100px";
+      height= "50px";
+    }
+  
+  </style>
+   
+  </head>
+  <body>
+    <h1 class= "Title" <b>Optical Caracter Recognition </b> </h1>
+      
+        <summary>Charger une image</summary>
+        <p title = "Image">charger une image avec un nombre</p>
+      
+    
+    <img   src={%static "plage.jpg" %}   width = "100px" height= "50px" usemap = "#digits_number"> <br></br>
+    <map name="digits_number">
+      <area shape="rect" coords="34,44,270,350" alt="Computer" href="C:Users/Dragomir/Desktop/site_camera/polls/static/plage.jpg">
+    </map>
+
+    <iframe src={%static "digits_hand.png"%} width = "300px" height= "100px"></iframe>
+    
+    {% if latest_question_list %}
+   
+    <ul>
+    
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+        
+    {% endfor %}
+    
+    </ul>
+    
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+  
+    <table style ="table">
+      <tr>
+        <th>image 1</th>
+        <th>image 2</th>
+        <th>image 3</th>
+      </tr>
+      <tr>
+        <td>result1</td>
+        <td>result2</td>
+        <td>result3</td>
+      </tr>
+      <tr>
+        <td>empty</td>
+        <td>empty</td>
+        <td>empty</td>
+      </tr>
+      <br><br>
+    </table>
+
+    <h1>Connnexion</h1>
+    <form action="" method="post" >
+      {% csrf_token %}
+      {{formulaire}}<br><br>
+      <input type="submit"  value="Submit using POST">
+    </form>
+    
+  </body>
+</html>
+

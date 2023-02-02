@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<h1>{{ question.question_text }}</h1>
+
+<h1>page web results</h1>
+<img src="C:/Users/Dragomir/Desktop/Django/site_camera/polls/static/digits_hand.jpeg"  width="200" height="200"  >
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+
+</html> 
